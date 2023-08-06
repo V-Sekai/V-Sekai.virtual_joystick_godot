@@ -4,7 +4,7 @@
 
 **WORK IN PROGRESS 2023-08-06**
 
-This is a simple virtual joystick designed for touchscreens, with a particular focus on compatibility for iPad and large projector screen presentations. It's also optimized for 3D applications, providing an intuitive user interface for navigating 3D spaces. The joystick comes with useful options that make it versatile for various applications.
+This is a virtual joystick designed for touchscreens, with a particular focus on compatibility for iPad and large projector screen presentations. It's also optimized for 3D applications, providing an intuitive user interface for navigating 3D spaces. The joystick comes with useful options that make it versatile for various applications.
 
 GitHub Page: https://github.com/MarcoFazioRandom/Virtual-Joystick-Godot
 
