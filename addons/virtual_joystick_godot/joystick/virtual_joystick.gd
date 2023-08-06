@@ -35,10 +35,19 @@ enum Visibility_mode {
 ## If true, the joystick uses Input Actions (Project -> Project Settings -> Input Map)
 @export var use_input_actions := true
 
+enum Axis_mode {
+	UP_DOWN,
+	FRONT_BACK
+}
+
+@export var axis_mode := Axis_mode.UP_DOWN
+
 @export var action_left := "ui_left"
 @export var action_right := "ui_right"
 @export var action_up := "ui_up"
 @export var action_down := "ui_down"
+@export var action_front := "ui_front"
+@export var action_back := "ui_back"
 
 # PUBLIC VARIABLES
 
@@ -126,10 +135,23 @@ func _update_joystick(touch_position: Vector2) -> void:
 		else:
 			_update_input_action(action_left, -output.x)
 
-		if output.y > 0:
-			_update_input_action(action_down, output.y)
-		else:
-			_update_input_action(action_up, -output.y)
+		if use_input_actions:
+			if output.x > 0:
+				_update_input_action(action_right, output.x)
+			else:
+				_update_input_action(action_left, -output.x)
+
+			if axis_mode == Axis_mode.UP_DOWN:
+				if output.y > 0:
+					_update_input_action(action_down, output.y)
+				else:
+					_update_input_action(action_up, -output.y)
+			elif axis_mode == Axis_mode.FRONT_BACK:
+				if output.y > 0:
+					_update_input_action(action_front, output.y)
+				else:
+					_update_input_action(action_back, -output.y)
+
 
 func _update_input_action(action:String, value:float):
 	if value > InputMap.action_get_deadzone(action):
